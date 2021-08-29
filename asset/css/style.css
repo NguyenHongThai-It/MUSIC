@@ -1,0 +1,205 @@
+* {
+    box-sizing: border-box;
+    padding:0;
+    margin:0;
+    font-family: "Poppins", sans-serif;
+}
+html{
+    /* background: url(http://127.0.0.1:5500/MUSIC/asset/img/anime.png) top center / 100% 1000px no-repeat; */
+}
+
+:root{
+    --red-color:#EC1F55;
+    --text-color: #333333;
+    --white-color: #fff;
+    --bg-color-primary: #f5f5f5;
+    --bg-color-secondary: #fff;
+    --bg-toggle-btn: #888;
+    --box-shadow: rgba(100, 100, 110, 0.2) 0px 8px 28px 0px;
+    --title-color: #1e1e1e;
+    --text2-color: #4e4e4e;
+}
+[data-theme='dark'] {
+    --bg-color-primary: #18191a;
+    --bg-color-secondary: #242526;
+    --bg-toggle-btn: #4e4f50;
+    --box-shadow: rgba(25, 25, 25, 0.2) 0px 8px 28px 0px;
+    --title-color: #f1f2f3;
+    --text2-color: #d4d5d6;
+  }
+.player {
+    position: relative;
+    max-width: 480px;
+    margin: 0 auto;
+}
+.dashboard {
+    padding: 16px 16px 14px;
+    max-width: 480px;
+    position: fixed;
+    width: 100%;
+    background-color: var(--bg-color-primary);
+    top: 0;
+    box-shadow: 0 1px 2px rgba(0, 0, 0,0.5);
+}
+header {
+    margin-bottom: 10px;
+    text-align: center;
+}
+h4 {
+    font-size: 12px;
+    color: var(--red-color);
+}
+h2 {
+    font-size: 20px;
+    color: var(--text2-color);
+
+}
+.cd {
+    width: 200px;
+    margin: 0 auto;
+}
+.cd-thumb {
+    /* background-image: url('https://i.ytimg.com/vi/jTLhQf5KJSc/maxresdefault.jpg'); */
+    padding-top:100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+}
+.control {
+    display: flex;
+    justify-content: space-around;
+    padding: 16px 0 8px;
+}
+.btn  {
+    font-size: 18px;
+    padding: 18px;
+    color: var(--text2-color);
+}
+.active {
+    color: var(--red-color);
+}
+.btn-next:active,
+.btn-prev:active{
+    color: var(--red-color);
+}
+.btn-toggle-play {
+    background-color: var(--red-color);
+    border-radius: 50%;
+    font-size: 24px;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    color: var(--white-color);
+}
+.player .icon-pause {
+    display: none;
+  }
+  
+.player.playing .icon-pause {
+    display: inline-block;
+  }
+  
+.player.playing .icon-play {
+    display: none;
+}
+.progress {
+    width: 100%;
+    -webkit-appearance: none;
+    height: 6px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: 0.2s;
+    transition: opacity 0.2s;
+}
+.progress::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 6px;
+    background-color: var(--red-color);
+    cursor: pointer;
+}
+/* Playlist */
+.playlist{
+    margin-top: 410px;
+    padding: 12px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0,0.3);
+    background-color: var(--bg-color-secondary)
+}
+.song{
+    box-shadow: 0 1px 2px rgba(0, 0, 0,0.3);
+    width: 100%;
+    background-color: var(--white-color);
+    padding: 8px 16px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.song.active {
+    background-color: rgba(114, 114, 114, 0.3);
+}
+.thumb{
+    background-image: url('https://i.ytimg.com/vi/jTLhQf5KJSc/maxresdefault.jpg');
+    width: 44px;
+    height: 44px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    margin: 0 8px;
+}
+.body{
+    flex: 1;
+    padding: 0 16px;
+}
+.body-title{
+    font-size: 18px;
+    /* color: var(--text2-color); */
+}
+.body-singer{
+    font-size:12px;
+    color: var(--text2-color);
+}
+.body-option{
+    padding: 16px 8px;
+    color: var(--text2-color);
+    font-size: 18px;
+}
+/* ToggleBtn */
+#toggleBtn {
+    width: 50px;
+    height: 25px;
+    border-radius: 20px;
+    background-color: #888;
+    box-shadow: rgb(100 100 110 / 20%) 0px 8px 28px 0px;
+    position: absolute;
+    right: 10px
+  }
+  #toggleBtn::before {
+    content: '';
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 25px;
+    height: 25px;
+    background-color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.35s;
+  }
+  #toggleBtn.active::before {
+    transform: translateX(25px);
+  }
+  /* responsive */
+  @media (min-width:740px) and (max-width:1023px){
+      body{
+          height: 1000px;
+      }
+  }
+  @media (max-width:739px){
+    body{
+        height: 690px;
+    }
+  }
