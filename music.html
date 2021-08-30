@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="shortcut icon" href="https://anime47.com/favicon.ico" type="image/x-icon">  
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
         integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
         crossorigin="anonymous" />
@@ -169,8 +170,11 @@
             handelEvents: function(){
                 // quay cdThumb
                 const cdThumbAnimate = cdThumb.animate([
+                    // @keyframes
                     {transform:'rotate(360deg)'}
-                ], {duration:20000,
+                ],
+                // option 
+                    {duration:20000,
                     iterations:Infinity})
                     cdThumbAnimate.pause()
                 const that = this
@@ -253,14 +257,8 @@
                     repeatBtn.classList.toggle("active",that.isRepeat)
                     randomBtn.classList.remove("active")
                 }
+                // khi bài hát kết thúc
                 audio.onended = function(){
-                    // if(that.isRandom){
-                    //     that.randomSong()
-                    // }
-                    // else{
-                    //     that.nextSong()
-                    // }
-                    // audio.play()
                     if(that.isRepeat){
                         audio.load()
                         audio.play()
@@ -271,13 +269,15 @@
                 // playClick
                playlist.onclick = function(e){
                    const songNode =e.target.closest('.song:not(.active)') 
-                   if(songNode|| e.target.closest('.option')){
-                    if(songNode){
+                   const optionNode =e.target.closest('.body-option') 
+                            if(songNode && !optionNode){
                                 that.currentIndex = Number(songNode.getAttribute('data-index'))
                                 that.loadCurrentSong()
                                 audio.play()
                             }
-                        }
+                            if(optionNode){
+                                e.stopPropagation()
+                            }
                     }
                 themeBtn.onclick = function(){
                     if(that.isLight){
