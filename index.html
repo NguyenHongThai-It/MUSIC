@@ -349,7 +349,10 @@
                 }, 300);
             },
             loadConfig: function () {
+                if(this.config.currentIndex){
                 this.currentIndex = this.config.currentIndex;
+                }
+                
                 // this.isLight = this.config.isLight;
             },
             start: function(){
